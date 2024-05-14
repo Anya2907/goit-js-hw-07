@@ -14,11 +14,11 @@ const boxes = document.querySelector('#boxes');
 buttonCreate.addEventListener('click', onClick);
 buttonDestroy.addEventListener('click', delClick);
 
-function onClick(evt) {
+function onClick(evt) {  
   const amount = input.value;  
   if (amount >= 1 && amount <= 100) {
     createBoxes(amount);
-  }
+  }  
 }
 
 function createBoxes(amount) {
@@ -29,8 +29,9 @@ function createBoxes(amount) {
     div.style.height = 30 + (i * 10) + 'px';
     div.style.backgroundColor = getRandomHexColor();
 
-    boxes.append(div);
-  }  
+    boxes.append(div);    
+  }
+  input.value = '';
 }
 
 function delClick(evt) {
