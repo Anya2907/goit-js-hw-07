@@ -4,43 +4,37 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
-const form = document.querySelector('#controls');
-console.log(form.children[0]);
+
+
+const input = document.querySelector('#controls input');
 const buttonCreate = document.querySelector('[data-create]');
 const buttonDestroy = document.querySelector('[data-destroy]');
-const boxes = document.querySelector('#boxes'); 
-// console.log(boxes);
-
-console.log(buttonCreate.textContent);
-console.log(buttonDestroy.textContent);
+const boxes = document.querySelector('#boxes');
 
 buttonCreate.addEventListener('click', onClick);
-buttonDestroy.addEventListener('click', delClick)
+buttonDestroy.addEventListener('click', delClick);
 
-function onClick(event) {
-  const div = document.createElement('div');
-  div.style.width = '30px';
-  div.style.height = '30px';
-  div.style.backgroundColor = getRandomHexColor();
-  boxes.append(div);
+function onClick(evt) {
+  const amount = input.value;  
+  if (amount >= 1 && amount <= 100) {
+    createBoxes(amount);
+  }
 }
-
-function delClick(event) {
-  boxes.classList.remove('#boxes');
- 
-}
-  
-
-// const div = function onClick(event) {
-  
-  
-
-//   return div;
-// }
-
-
-
 
 function createBoxes(amount) {
-  
+  for (let i = 0; i < amount; i++){   
+    const div = document.createElement('div');
+
+    div.style.width = 30 + (i * 10) + 'px';
+    div.style.height = 30 + (i * 10) + 'px';
+    div.style.backgroundColor = getRandomHexColor();
+
+    boxes.append(div);
+  }  
 }
+
+function delClick(evt) {
+  boxes.innerHTML = ''; 
+}
+  
+
