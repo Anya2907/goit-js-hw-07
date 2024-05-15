@@ -22,6 +22,7 @@ function onClick(evt) {
 }
 
 function createBoxes(amount) {
+  destroyBoxes();
   for (let i = 0; i < amount; i++){   
     const div = document.createElement('div');
 
